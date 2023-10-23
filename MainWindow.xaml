@@ -1,0 +1,44 @@
+﻿<Window x:Class="P04WeatherForecastAPI.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P04WeatherForecastAPI.Client"
+		xmlns:converters="clr-namespace:P04WeatherForecastAPI.Client.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="557">
+    <Window.Resources>
+        <converters:TemperatureToDisplayConverter x:Key="TemperatureToDisplayConverter"></converters:TemperatureToDisplayConverter>
+        <Style x:Key="mainLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DarkRed"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel Width="216" DockPanel.Dock="Left">
+            <Label Content="City:" ></Label>
+            <TextBox x:Name="txtCity"></TextBox>
+			<Button DockPanel.Dock="Top" x:Name="btnSearch" Content="Search" Command="{Binding LoadCitiesCommand}" CommandParameter="{Binding Text, ElementName=txtCity}" ></Button>
+			<ListBox Height="200"   x:Name="lbData" ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}" DisplayMemberPath="LocalizedName" Margin="0,10,0,0"></ListBox>
+        </StackPanel>
+        <StackPanel Width="339" RenderTransformOrigin="0.52,0.499">
+            <Label HorizontalAlignment="Center" Content="Forecast for city:"></Label>
+			<Label x:Name="lblCityName" Content="{Binding SelectedCity.LocalizedName}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Temperature 24 hours ago was"></Label>
+			<Label x:Name="lblTemperatureValue1" Content="{Binding DataView.TemperatureYesterday, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Temperature 6 hours ago was"></Label>
+            <Label x:Name="lblTemperatureValue2" Content="{Binding DataView.TemperatureSixHoursAgo, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+			<Label  HorizontalAlignment="Center" Content="Current temperature is"></Label>
+			<Label x:Name="lblTemperatureValue3" Content="{Binding WeatherView.CurrentTemperature, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Temperature in 1 hour will be"></Label>
+            <Label x:Name="lblTemperatureValue4" Content="{Binding DataView.TemperatureInOneHour, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Temperature tomorrow will be"></Label>
+            <Label x:Name="lblTemperatureValue5" Content="{Binding DataView.TemperatureTomorrow, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Temperature in 5 days will be"></Label>
+            <Label x:Name="lblTemperatureValue6" Content="{Binding DataView.TemperatureInFiveDays, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+            <Label  HorizontalAlignment="Center" Content="Are there any dangers?"></Label>
+            <Label x:Name="lblAlarm" Content="{Binding DataView.Alarms}" Style="{StaticResource mainLabelStyle}"></Label>
+        </StackPanel>
+    </DockPanel>
+</Window>
