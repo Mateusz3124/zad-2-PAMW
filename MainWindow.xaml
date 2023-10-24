@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P04WeatherForecastAPI.Client"
-		xmlns:converters="clr-namespace:P04WeatherForecastAPI.Client.Converters"
+	xmlns:converters="clr-namespace:P04WeatherForecastAPI.Client.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="557">
     <Window.Resources>
@@ -24,13 +24,13 @@
         </StackPanel>
         <StackPanel Width="339" RenderTransformOrigin="0.52,0.499">
             <Label HorizontalAlignment="Center" Content="Forecast for city:"></Label>
-			<Label x:Name="lblCityName" Content="{Binding SelectedCity.LocalizedName}" Style="{StaticResource mainLabelStyle}"></Label>
+	    <Label x:Name="lblCityName" Content="{Binding SelectedCity.LocalizedName}" Style="{StaticResource mainLabelStyle}"></Label>
             <Label  HorizontalAlignment="Center" Content="Temperature 24 hours ago was"></Label>
-			<Label x:Name="lblTemperatureValue1" Content="{Binding DataView.TemperatureYesterday, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+	    <Label x:Name="lblTemperatureValue1" Content="{Binding DataView.TemperatureYesterday, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
             <Label  HorizontalAlignment="Center" Content="Temperature 6 hours ago was"></Label>
             <Label x:Name="lblTemperatureValue2" Content="{Binding DataView.TemperatureSixHoursAgo, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
-			<Label  HorizontalAlignment="Center" Content="Current temperature is"></Label>
-			<Label x:Name="lblTemperatureValue3" Content="{Binding WeatherView.CurrentTemperature, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
+	    <Label  HorizontalAlignment="Center" Content="Current temperature is"></Label>
+	    <Label x:Name="lblTemperatureValue3" Content="{Binding WeatherView.CurrentTemperature, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
             <Label  HorizontalAlignment="Center" Content="Temperature in 1 hour will be"></Label>
             <Label x:Name="lblTemperatureValue4" Content="{Binding DataView.TemperatureInOneHour, Converter={StaticResource TemperatureToDisplayConverter}}" Style="{StaticResource mainLabelStyle}"></Label>
             <Label  HorizontalAlignment="Center" Content="Temperature tomorrow will be"></Label>
